@@ -56,6 +56,17 @@ body{
     width: 100%;
     padding: 20px 10px;
 }
+
+/* Пункты количества нажатий */
+.Item__title_of_number_hiden{
+    visibility: hidden;
+}
+.Item__title_of_number{
+    width: 100%;
+    padding: 20px 10px;
+}
+
+
 .Item__actions{
     padding: 20px  20px 20px 10px;
     display: flex;
