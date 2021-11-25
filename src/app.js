@@ -20,7 +20,7 @@ function App({store}) {
             key={item.code}
             className={'List__item' + (item.selected ? ' List__item_selected' : '')}
           >
-            <div className='Item' onClick={() => store.selectItem(item.code, (item.selected ? item.amount_of_click : item.amount_of_click++))}>
+            <div className='Item' onClick={() => store.selectItem(item.code)}>
               <div className='Item__number'>{item.code}</div>
               <div className='Item__title'>{item.title}</div>
               <div className={(item.amount_of_click ? 'Item__title_of_number': 'Item__title_of_number_hiden')}>Выделялся {item.amount_of_click} раз.</div>
