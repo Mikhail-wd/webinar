@@ -27,13 +27,22 @@ body{
 .Controls{
     display: flex;
     justify-content: flex-end;
-    padding: 20px;
+}
+.Controls__order{
+    text-align: end;
+    padding:  20px;
+}
+.Controls__text {
+    margin-left: 20px;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
 }
 
 /*Список*/
-.List{
 
-}
 .List__item{
     border-bottom: 1px dashed #ccc;
     transition: background-color 1s;
@@ -62,6 +71,7 @@ body{
     visibility: hidden;
 }
 .Item__title_of_number{
+    align-content: left;
     width: 100%;
     padding: 20px 10px;
 }
@@ -74,4 +84,13 @@ body{
 }
 .Item__number{
     padding: 20px 10px 20px 20px;
+}
+.item__near__button {
+    text-align: end;
+    width: 100%;
+    padding:  20px;
+}
+
+.button__near__item {
+    padding: 20px;
 }

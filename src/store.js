@@ -18,10 +18,13 @@ class Store {
     }
   }
 
+  
+
   /**
    * Выбор state
    * @return {*}
    */
+
   getState() {
     return this.state;
   }
@@ -46,45 +49,83 @@ class Store {
   /**
    * Создание записи
    */
-  createItem() {
-    const code = Math.max(0, ...this.state.items.map(item => item.code)) + 1;
-    this.setState({
-      items: this.state.items.concat({
-        code,
-        title: 'Новая запись №'+code,
-        amount_of_click: 0,
-      })
-    });
-  }
+  //createItem() {
+  //  const code = Math.max(0, ...this.state.items.map(item => item.code)) + 1;
+  //  this.setState({
+  //    items: this.state.items.concat({
+  //      code,
+  //      title: 'Новая запись №' + code,
+  //      amount_of_click: 0,
+  //    })
+  //  });
+  //}
 
   /**
    * Удаление записи по её коду
    * @param code
    */
-  deleteItem(code) {
-    this.setState({
-      items: this.state.items.filter(item => item.code !== code)
-    });
-  }
-
+  //deleteItem(code) {
+  //  this.setState({
+  //    items: this.state.items.filter(item => item.code !== code)
+  //  });
+  //}
   /**
    * Выделение записи по её коду
    * @param code
    */
-  selectItem(code) {
+  selectItem(code,price) {
     this.setState({
+      counterOfOrders: this.state.counterOfOrders+1,
+      counterOfMoney: this.state.counterOfMoney+=price,
+      sortedBasket: this.state.items.map(item => {
+        if (item.code === code){
+          } 
+        return (item)
+      }),
       items: this.state.items.map(item => {
         if (item.code === code){
-          item.selected = !item.selected;
-          if (item.selected){
-            item.amount_of_click++;
-          }
-        }
-        return item;
-      }) 
-    });
-    
+          item.times_ordered++;
+          } 
+        return (item);
+      }),
+      basket: this.state.basket={activeBasket: false},
+      
+  })
   }
+
+  selectActive(value) {
+    this.setState({
+      counterOfOrders: this.state.counterOfOrders,
+      counterOfMoney: this.state.counterOfMoney,
+      basket: this.state.basket[0]={activeBasket: value},
+      items: this.state.items.map(item => {
+        return (item);
+      }),
+      sortedBasket: this.state.items.map(item=> {
+        if(item.code == Number){
+          console.log(item.code=item["length"]);
+        }
+        return (item);
+      }),
+      sortedBasket: this.state.sortedBasket.sort((a,b) => b.times_ordered - a.times_ordered),
+    })
+  }
+  selectDeactive(value,code) {
+    this.setState({
+      counterOfOrders: this.state.counterOfOrders,
+      counterOfMoney: this.state.counterOfMoney,
+      items: this.state.items.map(item => {
+        if (item.code === code){
+          item.times_ordered++;
+          } 
+        return (item)
+        }),
+      sortedBasket: this.state.sortedBasket.sort((a,b) => b.times_ordered - a.times_ordered),
+      basket: this.state.basket[0]={activeBasket: value},
+    })
+  }
+
 }
 
+ 
 export default Store;
